@@ -1,14 +1,38 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
+import react from "eslint-plugin-react";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
-
+import reactRefresh from "eslint-plugin-react-refresh";
+import pluginReactJsxRuntime from "react/jsx-runtime";
 
 export default [
-  {files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"]},
-  { languageOptions: { parserOptions: { ecmaFeatures: { jsx: true } } } },
-  {languageOptions: { globals: globals.browser }},
+  {
+    ignores: ['dist'],
+  },
+  {
+    plugins: {
+      react,
+      reactRefresh,
+      pluginReactConfig,
+      pluginReactJsxRuntime,
+    },
+    rules: {
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
+      'reactRefresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+    },
+    languageOptions: {
+      globals: globals.browser,
+      parserOptions: {
+        ecmaFeatures: { jsx: true }
+      }
+    }
+  },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  pluginReactConfig,
+  eslintConfigPrettier,
 ];

@@ -5,6 +5,7 @@ import react from "eslint-plugin-react";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
 import reactRefresh from "eslint-plugin-react-refresh";
 import pluginReactJsxRuntime from "react/jsx-runtime";
+import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
   {

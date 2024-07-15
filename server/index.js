@@ -1,7 +1,7 @@
-const port = 5000;
+const port = 5001;
 
-const express = require('express')
 require('dotenv').config()
+const express = require('express')
 const axios = require('axios')
 const app = express()
 const cors = require('cors')
@@ -10,14 +10,14 @@ const Amadeus = require('amadeus');
 const amadeus = new Amadeus();
 
 // listening for port 5000
-app.listen(5000, () => console.log(`Server is running on ${port}` ))
+app.listen(5001, () => console.log(`Server is running on ${port}` ))
 
 // API request
 app.get('/', (req,res)=>{
   amadeus.shopping.flightDestinations.get({
     origin : req.params.origin,
     maxPrice: req.params.maxPrice,
-    viewBy: "country",
+    viewBy: "COUNTRY",
   }).then(function(response){
     res.json(response.data);
   }).catch(function (error) {

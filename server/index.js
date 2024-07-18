@@ -15,8 +15,8 @@ app.listen(5001, () => console.log(`Server is running on ${port}` ))
 // API request
 app.get('/', (req,res)=>{
   amadeus.shopping.flightDestinations.get({
-    origin : req.params.origin,
-    maxPrice: req.params.maxPrice,
+    origin : req.query.origin,
+    maxPrice: req.query.maxPrice,
     viewBy: "COUNTRY",
   }).then(function(response){
     res.json(response.data);

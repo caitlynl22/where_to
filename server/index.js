@@ -2,7 +2,6 @@ const port = 5001;
 
 require('dotenv').config()
 const express = require('express')
-const axios = require('axios')
 const app = express()
 const cors = require('cors')
 app.use(cors())
@@ -20,7 +19,8 @@ app.get('/', (req,res)=>{
     viewBy: "COUNTRY",
   }).then(function(response){
     res.json(response.data);
-  }).catch(function (error) {
+  }).catch(function(error) {
+    res.json(error)
     console.error(error);
   });
 });

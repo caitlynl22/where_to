@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
 
 //import SearchResultsList from "./SearchResultsList";
 import DestinationResult from "./DestinationResult";
@@ -54,7 +55,7 @@ function DestinationSearch() {
       <p>{maxPrice}</p>
       <ul>
         {results?.map((result) => (
-          <DestinationResult destination={result.destination} departureDate={result.departureDate} returnDate={result.returnDate} price={result.price.total} links={result.links} />
+          <DestinationResult key={uuidv4()} destination={result.destination} departureDate={result.departureDate} returnDate={result.returnDate} price={result.price.total} links={result.links} />
         ))}
       </ul>
     </>
